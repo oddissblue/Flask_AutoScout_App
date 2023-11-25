@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<link rel="shortcut icon" href = "{{ url_for('static',filename='img/oddissblue.ico') }}">
+	<title>{{title}}</title>
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=PT+Sans:400" rel="stylesheet">
+
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" />
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+</head>
+
+<body>
+	<div id="booking" class="section">
+		<div class="section-center">
+			<div class="container">
+				<div class="booking-form">
+					<div class="row">
+						<form method="POST" action="">
+							{% with messages = get_flashed_messages(with_categories=true) %}
+								{% if messages %}
+  									{% for category, message in messages %}
+    									<div class="alert alert-{{ category }}"> {{ message }} </div>
+									{% endfor %}
+								{% endif %}
+							{% endwith %}
+							<div class="form-group">
+								{{ form.hidden_tag() }}
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">HorsePower Per KiloWatt</span>
+										{{ form.car_hp_kW(class="form-control", type="number", placeholder="0 HP/kW") }}
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Car Mileage</span>
+										{{ form.car_mileage(class="form-control", type="number", placeholder="0 km") }}
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Car Age</span>
+										{{ form.car_age(class="form-control", type="number", placeholder="0") }}
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Car Engine Size</span>
+										{{ form.car_engine_size(class="form-control", type="number", placeholder="0") }}
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group">
+										<span class="form-label">Car Make Model</span>
+										{{ form.car_make_model(class="form-control") }}
+										<span class="select-arrow"></span>
+									</div>
+								</div>
+								<div class="col-md-2">
+									<div class="form-group">
+										<span class="form-label">Car Usage Type</span>
+										{{ form.car_usage_type(class="form-control") }}
+										<span class="select-arrow"></span>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-btn">
+										{{ form.submit(class="submit-btn") }}
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+					<!--
+					{% if pred != Null %}
+					<div class="row">
+						<h1 class="text-center mt-4"> <span style="color: lime;"> {{ pred }} $</span> </h1>
+					</div>
+					{% endif %}
+					-->
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
