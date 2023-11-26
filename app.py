@@ -19,7 +19,6 @@ import pandas as pd
 # App configs
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'NYbow8yu5c5Tma96XN2xhQzfedshdjrtit'
-app.run(host='0.0.0.0', port=8080)
 
 # Model loading:
 print("Loading Pre-trained Model ...")
